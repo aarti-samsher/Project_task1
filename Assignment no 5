@@ -1,0 +1,88 @@
+//ASSIGNMENT NO 5
+//HTML FILE
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="task1.css">
+    
+</head>
+
+<body>
+    <script>
+        const images = [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpD90bhe97QAT6GoG-roHzVXzjezeTypSEOA&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2rnZPQwAngudNXpVeuE-bmDOJCmDnjFiGXg&s",
+        "https://www.flaberry.com/_next/image?url=https%3A%…alog%2Fproduct%2F3%2F1%2F312pid_1.jpg&w=1080&q=75",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:AN…JU3xPODfj16Fs8zNATSsge1htR_GLjlfeD5BsjBY&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:AN…rK8UOY3m3oaCCjI-EOiCwjuDmPpR4TtT_ttMvZDI&usqp=CAU",
+        ];
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("slider-image");
+        const prevButton = document.getElementById("prev-button");
+        const nextButton = document.getElementById("next-button");
+    
+    
+        function updateImage() {
+           sliderImage.src=images[currentIndex];
+           
+        }
+        function nextImage() {
+            currentIndex=(currentIndex+1)%images.length;
+            updateImage();
+        }
+        function prevImage() {
+            currentIndex=(currentIndex-1+images.length)%images.length;
+            updateImage();
+        }
+        nextButton.addEventListener("click",nextImage);
+        prevButton.addEventListener("click",prevImage);
+
+        updateImage();
+    </script>
+    <div id="slider">
+        <img src="./christmas-.jpg" alt="Slider Image">
+        <button id="prev-button">Previous</button>
+        <button id="next-button">Next</button>
+    </div>
+    
+</body>
+
+</html>
+
+//CSS FILE
+
+#slider{
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+#slider-image{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#prev-button,#next-button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1;
+}
+
+#prev-button{
+    left: 10px;
+}
+#next-button{
+    right: 10px;
+}
