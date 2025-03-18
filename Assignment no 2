@@ -1,0 +1,51 @@
+//ASSIGNMENT NO 2
+
+class Anagram
+{
+	public static boolean areAnagrams(String str1,String str2)
+	{
+		str1=str1.replaceAll("\s","").toLowerCase();
+		str2=str2.replaceAll("\s","").toLowerCase();
+		if(str1.length()!=str2.length())
+		{
+			return false;
+		}
+		int[] charCount1=new int[26];
+		int[] charCount2=new int[26];
+		for(int i=0;i<str1.length();i++)
+		{
+		charCount1[str1.charAt(i)- 'a']++;
+		}
+		for(int i=0;i<str2.length();i++)
+		{
+		charCount2[str2.charAt(i)- 'a']++;
+		}
+		for(int i=0;i<26;i++)
+		{
+			if(charCount1[i]!=charCount2[i])
+			{
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	public static void main(String args[])
+	{
+		String str1="listen";
+		String str2="silent";
+		System.out.println("Input:\""+str1+"\",\""+str2+"\"");
+		System.out.println("Output:"+areAnagrams(str1,str2));
+		
+		str1="hello";
+		str2="World";
+		System.out.println("Input:\""+str1+"\",\""+str2+"\"");
+		System.out.println("Output:"+areAnagrams(str1,str2));
+		
+		/*str1="Debit Card";
+		str2="Bad Crediti";
+		System.out.println("Input:\""+str1+"\",\""+str2+"\"");
+		System.out.println("Output:"+areAnagrams(str1,str2));
+		*/
+	}
+}
